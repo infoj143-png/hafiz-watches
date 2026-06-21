@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hafiz Watches Admin Panel</title>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0} body{font-family:Segoe UI,Tahoma,sans-serif;background:#080808;color:#eee;min-height:100vh} .wrap{max-width:1200px;margin:auto;padding:20px}.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}.brand{font-size:28px;font-weight:800;color:#d4af37}.card{background:linear-gradient(135deg,#151515,#0d1c1b);border:1px solid rgba(212,175,55,.35);border-radius:16px;padding:20px;margin-bottom:18px;box-shadow:0 10px 30px rgba(0,0,0,.35)} h2,h3{color:#d4af37;margin-bottom:14px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px} input,select,textarea{width:100%;padding:12px;background:#0b0b0b;color:#fff;border:1px solid rgba(212,175,55,.35);border-radius:10px} textarea{min-height:80px}.btn{border:0;border-radius:10px;padding:11px 15px;font-weight:700;cursor:pointer;background:linear-gradient(135deg,#d4af37,#f4e4c1);color:#111}.btn.red{background:#d43b3b;color:#fff}.btn.blue{background:linear-gradient(135deg,#00d4ff,#8b3dff);color:#fff}.btn.green{background:#00a859;color:#fff}.muted{color:#aaa;font-size:13px}.hidden{display:none}.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.product,.order{display:grid;grid-template-columns:80px 1fr auto;gap:14px;align-items:center;border-top:1px solid rgba(212,175,55,.18);padding:14px 0}.product img{width:80px;height:80px;object-fit:cover;border-radius:10px;background:#111}.pill{display:inline-block;padding:5px 10px;border-radius:999px;background:rgba(212,175,55,.15);color:#d4af37;font-size:12px}.login{max-width:420px;margin:80px auto}.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}.stat{padding:16px;border-radius:14px;background:rgba(212,175,55,.08);border:1px solid rgba(212,175,55,.2)}.stat b{display:block;color:#00ff88;font-size:26px;margin-top:6px}@media(max-width:700px){.product,.order{grid-template-columns:1fr}.top{align-items:flex-start;gap:10px;flex-direction:column}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div id="loginBox" class="card login">
+      <h2>⌚ Hafiz Watches Admin</h2>
+      <p class="muted" style="margin-bottom:15px">Login with Firebase Authentication email/password.</p>
+      <div class="grid">
+        <input id="loginEmail" type="email" placeholder="Admin email" />
+        <input id="loginPassword" type="password" placeholder="Password" />
+      </div>
+      <button class="btn" style="width:100%;margin-top:12px" id="loginBtn">Login</button>
+      <p id="loginMsg" class="muted" style="margin-top:10px"></p>
+    </div>
+
+    <div id="adminBox" class="hidden">
+      <div class="top">
+        <div><div class="brand">⌚ HAFIZ WATCHES</div><p class="muted">Admin Panel</p></div>
+        <button class="btn red" id="logoutBtn">Logout</button>
+      </div>
+
+      <div class="stats">
+        <div class="stat">Products <b id="productCount">0</b></div>
+        <div class="stat">Orders <b id="orderCount">0</b></div>
+        <div class="stat">Pending <b id="pendingCount">0</b></div>
+      </div>
+
+      <div class="card">
+        <h3 id="formTitle">Add / Update Product</h3>
+        <input type="hidden" id="productId" />
+        <div class="grid">
+          <input id="title" placeholder="Product name" />
+          <input id="newPrice" type="number" placeholder="New price e.g. 2999" />
+          <input id="oldPrice" type="number" placeholder="Old price e.g. 4999" />
+          <input id="image" placeholder="Image path e.g. images/imageswatch1.jpg" />
+          <input id="stock" type="number" placeholder="Stock e.g. 10" />
+          <select id="status"><option value="active">Active</option><option value="inactive">Inactive</option></select>
+        </div>
+        <textarea id="description" placeholder="Short product description"></textarea>
+        <div class="row" style="margin-top:12px">
+          <button class="btn" id="saveProductBtn">Save Product</button>
+          <button class="btn blue" id="seedBtn">Add Demo Products</button>
+          <button class="btn red" id="clearFormBtn">Clear</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Products</h3>
+        <div id="productsList"><p class="muted">Loading...</p></div>
+      </div>
+
+      <div class="card">
+        <h3>Delivery Charges</h3>
+        <div class="grid" id="deliveryGrid"></div>
+        <button class="btn" style="margin-top:12px" id="saveDeliveryBtn">Save Delivery Charges</button>
+      </div>
+
+      <div class="card">
+        <h3>Orders</h3>
+        <div id="ordersList"><p class="muted">Loading...</p></div>
+      </div>
+    </div>
+  </div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
+import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
+import { getFirestore, collection, addDoc, doc, updateDoc, deleteDoc, onSnapshot, setDoc, getDocs, serverTimestamp, query, orderBy } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
+import { firebaseConfig } from "./firebase-config.js";
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+const cities = {gujranwala:200, lahore:250, faisalabad:250, rawalpindi:300, islamabad:300, karachi:350, peshawar:350, quetta:400, remote:500};
+const demoProducts = [
+ {title:'Black Luxury Watch', image:'images/imageswatch1.jpg', oldPrice:4999, newPrice:2999, stock:10, status:'active', description:'Premium black watch with luxury finish.'},
+ {title:'Premium Black Edition', image:'images/imageswatch2.jpg', oldPrice:4500, newPrice:2499, stock:8, status:'active', description:'Elegant black edition for daily wear.'},
+ {title:'Executive Collection', image:'images/imageswatch3.jpg', oldPrice:3999, newPrice:1999, stock:12, status:'active', description:'Affordable executive style watch.'},
+ {title:'Royal Gold Edition', image:'images/imageswatch5.jpg', oldPrice:4800, newPrice:3199, stock:6, status:'active', description:'Luxury look with premium shine.'},
+ {title:'Elite Collection', image:'images/imageswatch9.jpg', oldPrice:4600, newPrice:2699, stock:7, status:'active', description:'Best seller Hafiz Watches collection.'}
+];
+
+const $ = id => document.getElementById(id);
+function msg(id, text){ $(id).textContent = text; }
+
+$('loginBtn').onclick = async () => {
+  try { await signInWithEmailAndPassword(auth, $('loginEmail').value.trim(), $('loginPassword').value); }
+  catch(e){ msg('loginMsg', e.message); }
+};
+$('logoutBtn').onclick = () => signOut(auth);
+
+onAuthStateChanged(auth, user => {
+  $('loginBox').classList.toggle('hidden', !!user);
+  $('adminBox').classList.toggle('hidden', !user);
+  if(user){ startAdmin(); }
+});
+
+let started=false;
+function startAdmin(){
+ if(started) return; started=true;
+ renderDeliveryInputs();
+ onSnapshot(collection(db,'products'), snap => {
+   $('productCount').textContent = snap.size;
+   $('productsList').innerHTML = snap.empty ? '<p class="muted">No products yet. Click Add Demo Products.</p>' : '';
+   snap.forEach(d => renderProduct(d.id, d.data()));
+ });
+ onSnapshot(query(collection(db,'orders'), orderBy('createdAt','desc')), snap => {
+   $('orderCount').textContent = snap.size;
+   let pending=0; $('ordersList').innerHTML = snap.empty ? '<p class="muted">No orders yet.</p>' : '';
+   snap.forEach(d => { const data=d.data(); if((data.status||'Pending')==='Pending') pending++; renderOrder(d.id, data); });
+   $('pendingCount').textContent = pending;
+ }, err => { $('ordersList').innerHTML = '<p class="muted">Orders loading: '+err.message+'</p>'; });
+}
+
+function renderProduct(id,p){
+ const div=document.createElement('div'); div.className='product';
+ div.innerHTML=`<img src="${p.image||''}" onerror="this.style.display='none'">
+ <div><b>${p.title||'No title'}</b><br><span class="pill">Rs. ${p.newPrice||0}</span> <span class="muted">Old: Rs. ${p.oldPrice||0} | Stock: ${p.stock??0} | ${p.status||'active'}</span><p class="muted">${p.description||''}</p></div>
+ <div class="row"><button class="btn blue">Edit</button><button class="btn red">Delete</button></div>`;
+ div.querySelector('.btn.blue').onclick=()=>fillForm(id,p);
+ div.querySelector('.btn.red').onclick=async()=>{ if(confirm('Delete this product?')) await deleteDoc(doc(db,'products',id)); };
+ $('productsList').appendChild(div);
+}
+function fillForm(id,p){ $('productId').value=id; $('title').value=p.title||''; $('newPrice').value=p.newPrice||''; $('oldPrice').value=p.oldPrice||''; $('image').value=p.image||''; $('stock').value=p.stock||0; $('status').value=p.status||'active'; $('description').value=p.description||''; $('formTitle').textContent='Edit Product'; window.scrollTo({top:0,behavior:'smooth'}); }
+function clearForm(){ ['productId','title','newPrice','oldPrice','image','stock','description'].forEach(x=>$(x).value=''); $('status').value='active'; $('formTitle').textContent='Add / Update Product'; }
+$('clearFormBtn').onclick=clearForm;
+$('saveProductBtn').onclick=async()=>{
+ const data={title:$('title').value.trim(), newPrice:Number($('newPrice').value), oldPrice:Number($('oldPrice').value), image:$('image').value.trim(), stock:Number($('stock').value||0), status:$('status').value, description:$('description').value.trim(), updatedAt:serverTimestamp()};
+ if(!data.title || !data.newPrice || !data.image) return alert('Product name, price and image required');
+ const id=$('productId').value;
+ if(id) await updateDoc(doc(db,'products',id), data); else await addDoc(collection(db,'products'), {...data, createdAt:serverTimestamp()});
+ clearForm(); alert('Product saved');
+};
+$('seedBtn').onclick=async()=>{ if(!confirm('Add demo products to Firestore?')) return; for(const p of demoProducts) await addDoc(collection(db,'products'), {...p, createdAt:serverTimestamp()}); alert('Demo products added'); };
+
+function renderDeliveryInputs(){ $('deliveryGrid').innerHTML=Object.entries(cities).map(([c,v])=>`<div><label class="muted">${c}</label><input id="city_${c}" type="number" value="${v}"></div>`).join(''); }
+$('saveDeliveryBtn').onclick=async()=>{ const data={}; Object.keys(cities).forEach(c=>data[c]=Number($('city_'+c).value||0)); await setDoc(doc(db,'deliveryCharges','pakistan'), data); alert('Delivery charges saved'); };
+onSnapshot(doc(db,'deliveryCharges','pakistan'), d=>{ if(d.exists()){ const data=d.data(); Object.keys(data).forEach(c=>{ if($('city_'+c)) $('city_'+c).value=data[c]; }); }});
+
+function renderOrder(id,o){
+ const items=(o.items||[]).map(i=>`${i.title} x${i.quantity}`).join(', ');
+ const div=document.createElement('div'); div.className='order';
+ div.innerHTML=`<div><span class="pill">${o.status||'Pending'}</span></div><div><b>${o.name||'Customer'}</b> - ${o.phone||''}<br><span class="muted">${items}</span><br><span class="muted">${o.city||''} | Total: Rs. ${o.total||0} | ${o.paymentMethod||''}</span><p class="muted">${o.address||''}</p></div><div><select><option>Pending</option><option>Confirmed</option><option>Shipped</option><option>Delivered</option></select></div>`;
+ const sel=div.querySelector('select'); sel.value=o.status||'Pending'; sel.onchange=()=>updateDoc(doc(db,'orders',id),{status:sel.value, updatedAt:serverTimestamp()});
+ $('ordersList').appendChild(div);
+}
+</script>
+</body>
+</html>
