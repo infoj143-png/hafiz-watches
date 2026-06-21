@@ -1,0 +1,1744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Hafiz Watches - Premium Luxury Watches Collection. Best Quality Watches at Affordable Prices.">
+    <meta name="keywords" content="luxury watches, premium watches, affordable watches, black watches, gold watches">
+    <meta name="author" content="Hafiz Watches">
+    <meta property="og:title" content="Hafiz Watches - Premium Luxury Collection">
+    <meta property="og:description" content="Discover our premium luxury watches collection. Best quality at affordable prices.">
+    <meta property="og:type" content="website">
+    <title>Hafiz Watches - Premium Luxury Watches Collection</title>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-dark: #0a0a0a;
+            --secondary-dark: #1a1a1a;
+            --tertiary-dark: #2a2a2a;
+            --gold: #d4af37;
+            --light-gold: #f4e4c1;
+            --white: #ffffff;
+            --text-light: #e0e0e0;
+            --text-muted: #999999;
+            --accent-blue: #00d4ff;
+            --accent-purple: #b833ff;
+            --success-green: #00ff88;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--secondary-dark) 100%);
+            color: var(--text-light);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 15px 0;
+            animation: slideDown 0.5s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--gold), var(--light-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 2px;
+            cursor: pointer;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--gold);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -12px;
+            background: var(--accent-blue);
+            color: var(--primary-dark);
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 70px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding: 60px 20px 40px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            top: -100px;
+            right: -100px;
+            animation: float 6s ease-in-out infinite;
+            z-index: 0;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            bottom: -150px;
+            left: -150px;
+            animation: float 8s ease-in-out infinite reverse;
+            z-index: 0;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-30px);
+            }
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 60px;
+            position: relative;
+            z-index: 2;
+            width: 100%;
+        }
+
+        .hero-text h1 {
+            font-size: 56px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--gold), var(--light-gold), var(--white));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero-text p {
+            font-size: 18px;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 16px 40px;
+            background: linear-gradient(135deg, var(--gold), var(--light-gold));
+            color: var(--primary-dark);
+            text-decoration: none;
+            border: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 10px 40px rgba(212, 175, 55, 0.3);
+            animation: fadeInUp 0.8s ease 0.4s both;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 50px rgba(212, 175, 55, 0.5);
+        }
+
+        .hero-image {
+            position: relative;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fadeInUp 0.8s ease 0.6s both;
+        }
+
+        .watch-frame {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(0, 212, 255, 0.05));
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            border-radius: 20px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .watch-frame::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        .watch-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            position: relative;
+            z-index: 2;
+            filter: drop-shadow(0 20px 40px rgba(212, 175, 55, 0.3));
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotateY(0deg);
+            }
+            100% {
+                transform: rotateY(360deg);
+            }
+        }
+
+        /* Featured Banner */
+        .featured-banner {
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(0, 212, 255, 0.1));
+            border: 2px solid rgba(0, 255, 136, 0.3);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            margin: 40px 0;
+            backdrop-filter: blur(10px);
+            animation: slideUp 0.6s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .featured-banner p {
+            color: var(--success-green);
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        /* Products Section */
+        .products-section {
+            padding: 80px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .section-title h2 {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, var(--gold), var(--light-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-title p {
+            color: var(--text-muted);
+            font-size: 16px;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .products-grid h3 {
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .product-card {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.05), rgba(0, 212, 255, 0.05));
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 15px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .product-card.featured {
+            border: 2px solid var(--gold);
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), rgba(0, 212, 255, 0.08));
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            padding: 8px 15px;
+            border-radius: 25px;
+            font-size: 11px;
+            font-weight: 700;
+            z-index: 10;
+            backdrop-filter: blur(10px);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .badge-featured {
+            background: linear-gradient(135deg, var(--gold), var(--light-gold));
+            color: var(--primary-dark);
+        }
+
+        .badge-premium {
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            color: var(--white);
+        }
+
+        .badge-luxury {
+            background: linear-gradient(135deg, var(--accent-purple), var(--gold));
+            color: var(--white);
+        }
+
+        .badge-executive {
+            background: linear-gradient(135deg, var(--success-green), var(--accent-blue));
+            color: var(--primary-dark);
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, transparent, rgba(212, 175, 55, 0.1));
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 1;
+        }
+
+        .product-card:hover {
+            border-color: var(--gold);
+            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.2);
+            transform: translateY(-10px);
+        }
+
+        .product-card:hover::before {
+            opacity: 1;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(0, 212, 255, 0.1));
+            border-radius: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+            z-index: 2;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+
+        .product-info {
+            position: relative;
+            z-index: 2;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--white);
+        }
+
+        .product-rating {
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .stars {
+            color: var(--gold);
+            letter-spacing: 2px;
+        }
+
+        .price-section {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            align-items: center;
+        }
+
+        .old-price {
+            color: var(--text-muted);
+            text-decoration: line-through;
+            font-size: 14px;
+        }
+
+        .new-price {
+            color: var(--success-green);
+            font-size: 22px;
+            font-weight: 700;
+        }
+
+        .product-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: auto;
+        }
+
+        .add-cart-btn, .whatsapp-btn {
+            flex: 1;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 13px;
+        }
+
+        .add-cart-btn {
+            background: linear-gradient(135deg, var(--gold), var(--light-gold));
+            color: var(--primary-dark);
+        }
+
+        .add-cart-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
+        }
+
+        .whatsapp-btn {
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            color: var(--white);
+        }
+
+        .whatsapp-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 212, 255, 0.3);
+        }
+
+        /* Trust Section */
+        .trust-section {
+            padding: 60px 20px;
+            background: rgba(212, 175, 55, 0.05);
+            border-radius: 20px;
+            margin: 60px 0;
+        }
+
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+
+        .trust-item {
+            text-align: center;
+            padding: 30px;
+        }
+
+        .trust-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .trust-item h3 {
+            color: var(--gold);
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .trust-item p {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        /* Reviews Section */
+        .reviews-section {
+            padding: 80px 20px;
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .review-card {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.05), rgba(0, 212, 255, 0.05));
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 15px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        .review-rating {
+            color: var(--gold);
+            margin-bottom: 10px;
+            font-size: 14px;
+            letter-spacing: 2px;
+        }
+
+        .review-text {
+            color: var(--text-light);
+            margin-bottom: 15px;
+            font-style: italic;
+            line-height: 1.6;
+        }
+
+        .review-author {
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        /* Cart Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--secondary-dark);
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            animation: slideUp 0.3s ease;
+        }
+
+        .modal-content h2 {
+            color: var(--gold);
+            margin-bottom: 30px;
+            font-size: 28px;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 28px;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close-modal:hover {
+            color: var(--gold);
+        }
+
+        /* Cart Items */
+        .cart-items {
+            margin-bottom: 30px;
+        }
+
+        .cart-item {
+            display: flex;
+            gap: 15px;
+            padding: 15px;
+            background: rgba(212, 175, 55, 0.05);
+            border-radius: 10px;
+            margin-bottom: 15px;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .cart-item-info {
+            flex: 1;
+        }
+
+        .cart-item-name {
+            color: var(--white);
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .cart-item-price {
+            color: var(--gold);
+        }
+
+        .quantity-control {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .quantity-btn {
+            background: var(--gold);
+            border: none;
+            color: var(--primary-dark);
+            width: 30px;
+            height: 30px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 700;
+            transition: all 0.3s;
+        }
+
+        .quantity-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .quantity {
+            width: 40px;
+            text-align: center;
+            color: var(--white);
+            font-weight: 600;
+        }
+
+        .remove-btn {
+            background: rgba(255, 0, 0, 0.5);
+            border: none;
+            color: var(--white);
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .remove-btn:hover {
+            background: rgba(255, 0, 0, 0.8);
+        }
+
+        .cart-empty {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-muted);
+        }
+
+        .cart-total {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(0, 212, 255, 0.1));
+            padding: 20px;
+            border-radius: 10px;
+            margin: 30px 0;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .total-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            color: var(--text-light);
+        }
+
+        .total-amount {
+            display: flex;
+            justify-content: space-between;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--gold);
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
+            padding-top: 10px;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, var(--gold), var(--light-gold));
+            color: var(--primary-dark);
+            border: none;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-bottom: 10px;
+        }
+
+        .checkout-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
+        }
+
+        .checkout-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Checkout Form */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--gold);
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            background: rgba(212, 175, 55, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 8px;
+            color: var(--white);
+            font-family: inherit;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+            background: rgba(212, 175, 55, 0.1);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+        }
+
+        .form-group input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .payment-options {
+            margin: 30px 0;
+        }
+
+        .payment-option {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background: rgba(212, 175, 55, 0.05);
+            border: 2px solid rgba(212, 175, 55, 0.2);
+            border-radius: 10px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .payment-option:hover {
+            border-color: var(--gold);
+            background: rgba(212, 175, 55, 0.1);
+        }
+
+        .payment-option input[type="radio"] {
+            width: auto;
+            margin-right: 15px;
+            cursor: pointer;
+        }
+
+        .payment-option label {
+            margin: 0;
+            cursor: pointer;
+            flex: 1;
+        }
+
+        .delivery-info {
+            background: rgba(0, 212, 255, 0.05);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid var(--accent-blue);
+        }
+
+        .delivery-info p {
+            color: var(--text-light);
+            margin: 5px 0;
+            font-size: 14px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary-dark);
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 60px 20px 30px;
+            margin-top: 80px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            color: var(--gold);
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        .whatsapp-contact {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+        }
+
+        .whatsapp-link {
+            color: var(--success-green);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .whatsapp-link:hover {
+            color: var(--gold);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-text h1 {
+                font-size: 36px;
+            }
+
+            nav ul {
+                gap: 15px;
+                font-size: 12px;
+            }
+
+            .hero-image {
+                height: 300px;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .product-buttons {
+                flex-direction: column;
+            }
+
+            .modal-content {
+                padding: 20px;
+            }
+
+            .section-title h2 {
+                font-size: 28px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 10px 0;
+            }
+
+            .header-content {
+                gap: 15px;
+            }
+
+            .logo {
+                font-size: 18px;
+            }
+
+            nav ul {
+                gap: 10px;
+            }
+
+            .hero {
+                padding: 90px 15px 30px;
+            }
+
+            .hero-text h1 {
+                font-size: 24px;
+            }
+
+            .hero-text p {
+                font-size: 14px;
+            }
+
+            .cta-button {
+                padding: 12px 25px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">⌚ HAFIZ WATCHES</div>
+                <nav>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#collection">Collection</a></li>
+                        <li><a href="#featured">Featured</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li class="cart-icon" onclick="openCartModal()">
+                            🛒
+                            <span class="cart-count" id="cart-count">0</span>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Premium Luxury Watches Collection</h1>
+                    <p>Best Quality Watches at Affordable Prices</p>
+                    <button class="cta-button" onclick="document.getElementById('collection').scrollIntoView({behavior: 'smooth'})">Shop Now</button>
+                </div>
+                <div class="hero-image">
+                    <div class="watch-frame">
+                        <img src="images/imageswatch1.jpg" alt="Premium Luxury Watch">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Banner -->
+    <div class="container">
+        <div class="featured-banner">
+            <p>🎁 Free Delivery on Orders Above Rs.5000</p>
+        </div>
+    </div>
+
+    <!-- Products Section -->
+    <section class="products-section" id="collection">
+        <div class="container">
+            <div class="section-title">
+                <h2>Featured Collection</h2>
+                <p>Handpicked luxury timepieces for the discerning collector</p>
+            </div>
+
+            <div class="products-grid" id="products-grid">
+                <!-- Products will be generated by JavaScript -->
+            </div>
+
+            <!-- Trust Section -->
+            <div class="trust-section">
+                <div class="trust-grid">
+                    <div class="trust-item">
+                        <div class="trust-icon">✨</div>
+                        <h3>Premium Quality</h3>
+                        <p>Genuine luxury watches with international warranty</p>
+                    </div>
+                    <div class="trust-item">
+                        <div class="trust-icon">🚚</div>
+                        <h3>Fast Delivery</h3>
+                        <p>Quick and reliable delivery across Pakistan</p>
+                    </div>
+                    <div class="trust-item">
+                        <div class="trust-icon">🔒</div>
+                        <h3>Secure Payments</h3>
+                        <p>Multiple payment options for your convenience</p>
+                    </div>
+                    <div class="trust-item">
+                        <div class="trust-icon">💵</div>
+                        <h3>Cash On Delivery</h3>
+                        <p>Pay when your order arrives - No risk</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="reviews-section" id="featured">
+        <div class="container">
+            <div class="section-title">
+                <h2>Customer Reviews</h2>
+                <p>What our satisfied customers are saying</p>
+            </div>
+
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="review-rating">★★★★★</div>
+                    <p class="review-text">"Absolutely stunning watch! The quality exceeded my expectations and the delivery was super fast. Highly recommended!"</p>
+                    <p class="review-author">- Ahmed Khan, Lahore</p>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-rating">★★★★★</div>
+                    <p class="review-text">"Best luxury watches at such affordable prices. The customer service was excellent and very responsive on WhatsApp."</p>
+                    <p class="review-author">- Faisal Ahmed, Karachi</p>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-rating">★★★★★</div>
+                    <p class="review-text">"I've bought 3 watches from Hafiz Watches now. Every time the product quality and service have been top-notch!"</p>
+                    <p class="review-author">- Samir Hassan, Islamabad</p>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-rating">★★★★★</div>
+                    <p class="review-text">"The watch looks exactly like in the pictures. Premium packaging and genuine product. Worth every rupee!"</p>
+                    <p class="review-author">- Bilal Raza, Faisalabad</p>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-rating">★★★★★</div>
+                    <p class="review-text">"Cash on delivery option made it so convenient. The watch is a perfect gift for my father. Very happy!"</p>
+                    <p class="review-author">- Usman Ali, Rawalpindi</p>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-rating">★★★★★</div>
+                    <p class="review-text">"Luxury quality at pocket-friendly prices. Hafiz Watches is my go-to place for premium timepieces now!"</p>
+                    <p class="review-author">- Hassan Sheikh, Peshawar</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Modal -->
+    <div class="modal" id="cart-modal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeCartModal()">✕</button>
+            <h2>Shopping Cart</h2>
+            <div id="cart-items-container">
+                <div class="cart-empty">Your cart is empty</div>
+            </div>
+            <div class="cart-total" id="cart-total-container" style="display: none;">
+                <div class="total-row">
+                    <span>Subtotal:</span>
+                    <span id="subtotal">Rs. 0</span>
+                </div>
+                <div class="total-row">
+                    <span>Delivery Charges:</span>
+                    <span id="delivery-cost">Rs. 0</span>
+                </div>
+                <div class="total-amount">
+                    <span>Total:</span>
+                    <span id="cart-total">Rs. 0</span>
+                </div>
+            </div>
+            <button class="checkout-btn" onclick="proceedToCheckout()" id="checkout-btn" disabled>Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="modal" id="checkout-modal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeCheckoutModal()">✕</button>
+            <h2>Checkout</h2>
+            <form onsubmit="submitOrder(event)">
+                <div class="form-group">
+                    <label for="name">Full Name *</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number *</label>
+                    <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="city">City *</label>
+                    <select id="city" name="city" required onchange="updateDeliveryCharges()">
+                        <option value="">Select City</option>
+                        <option value="gujranwala" data-charge="200">Gujranwala - Rs 200</option>
+                        <option value="lahore" data-charge="250">Lahore - Rs 250</option>
+                        <option value="faisalabad" data-charge="250">Faisalabad - Rs 250</option>
+                        <option value="rawalpindi" data-charge="300">Rawalpindi - Rs 300</option>
+                        <option value="islamabad" data-charge="300">Islamabad - Rs 300</option>
+                        <option value="karachi" data-charge="350">Karachi - Rs 350</option>
+                        <option value="peshawar" data-charge="350">Peshawar - Rs 350</option>
+                        <option value="quetta" data-charge="400">Quetta - Rs 400</option>
+                        <option value="remote" data-charge="500">Remote Areas - Rs 500+</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="address">Address *</label>
+                    <textarea id="address" name="address" placeholder="Enter your complete address" rows="3" required></textarea>
+                </div>
+
+                <div class="delivery-info">
+                    <p><strong>Delivery Charges:</strong> <span id="delivery-display">Rs. 0</span></p>
+                    <p><strong>Order Total:</strong> <span id="order-total-display">Rs. 0</span></p>
+                </div>
+
+                <div class="payment-options">
+                    <label style="color: var(--gold); font-weight: 600; margin-bottom: 15px; display: block;">Select Payment Method *</label>
+                    
+                    <div class="payment-option">
+                        <input type="radio" id="cod" name="payment" value="cod" checked required>
+                        <label for="cod">💵 Cash On Delivery (Pay at Doorstep)</label>
+                    </div>
+
+                    <div class="payment-option">
+                        <input type="radio" id="card" name="payment" value="card" required>
+                        <label for="card">💳 Credit Card / Debit Card</label>
+                    </div>
+                </div>
+
+                <button type="submit" class="checkout-btn">Complete Order</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Us</h3>
+                    <p style="color: var(--text-muted); font-size: 14px; line-height: 1.6;">Hafiz Watches brings you the finest collection of luxury watches at affordable prices. We pride ourselves on quality, authenticity, and customer satisfaction.</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#collection">Collection</a></li>
+                        <li><a href="#featured">Featured</a></li>
+                        <li><a href="javascript:void(0)" onclick="alert('Privacy Policy: We protect your personal information and use it only for order fulfillment and communication.')">Privacy Policy</a></li>
+                        <li><a href="javascript:void(0)" onclick="alert('Terms & Conditions: By shopping with us, you agree to our terms of service and return policy.')">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <div class="whatsapp-contact">
+                        <span>📱 WhatsApp:</span>
+                        <a href="https://wa.me/923446110659" class="whatsapp-link">+92 344 6110659</a>
+                    </div>
+                    <div class="whatsapp-contact">
+                        <span>📧 Email:</span>
+                        <a href="mailto:hafizwatches@gmail.com" class="whatsapp-link">info@hafizwatches.com</a>
+                    </div>
+                    <div class="whatsapp-contact">
+                        <span>⏰ Hours:</span>
+                        <span style="color: var(--text-muted);">9 AM - 11 PM (Daily)</span>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Payment Methods</h3>
+                    <ul>
+                        <li>✅ Cash On Delivery</li>
+                        <li>💳 Credit Card</li>
+                        <li>💳 Debit Card</li>
+                        <li>🏦 Bank Transfer</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 Hafiz Watches. All rights reserved. | Premium Luxury Watches for Everyone</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Products Data
+        const products = [
+            // FEATURED PRODUCTS - Real Watch Images
+            {
+                id: 1,
+                title: "Black Luxury Watch",
+                image: "images/imageswatch1.jpg",
+                rating: 5,
+                oldPrice: 4999,
+                newPrice: 2999,
+                collection: "Featured",
+                badge: "featured"
+            },
+            {
+                id: 2,
+                title: "Premium Black Edition",
+                image: "images/imageswatch2.jpg",
+                rating: 5,
+                oldPrice: 4500,
+                newPrice: 2499,
+                collection: "Featured",
+                badge: "featured"
+            },
+            {
+                id: 3,
+                title: "Executive Collection",
+                image: "images/imageswatch3.jpg",
+                rating: 5,
+                oldPrice: 3999,
+                newPrice: 1999,
+                collection: "Featured",
+                badge: "featured"
+            },
+            {
+                id: 4,
+                title: "Silver Diamond Edition",
+                image: "images/imageswatch5.jpg",
+                rating: 5,
+                oldPrice: 4999,
+                newPrice: 3499,
+                collection: "Featured",
+                badge: "featured"
+            },
+            {
+                id: 5,
+                title: "Royal Gold Edition",
+                image: "images/imageswatch9.jpg",
+                rating: 5,
+                oldPrice: 4800,
+                newPrice: 3199,
+                collection: "Featured",
+                badge: "featured"
+            },
+            {
+                id: 6,
+                title: "Classic Business Watch",
+                image: "images/imageswatch1.jpg",
+                rating: 5,
+                oldPrice: 3800,
+                newPrice: 2299,
+                collection: "Featured",
+                badge: "featured"
+            },
+            {
+                id: 7,
+                title: "Limited Edition Watch",
+                image: "images/imageswatch2.jpg",
+                rating: 5,
+                oldPrice: 4999,
+                newPrice: 3699,
+                collection: "Featured",
+                badge: "featured"
+            },
+            {
+                id: 8,
+                title: "Luxury Chronograph",
+                image: "images/imageswatch3.jpg",
+                rating: 5,
+                oldPrice: 4700,
+                newPrice: 2899,
+                collection: "Featured",
+                badge: "featured"
+            },
+            {
+                id: 9,
+                title: "Elite Collection",
+                image: "images/imageswatch5.jpg",
+                rating: 5,
+                oldPrice: 4600,
+                newPrice: 2699,
+                collection: "Featured",
+                badge: "featured"
+            },
+
+            // PREMIUM COLLECTION - Real Watch Images
+            {
+                id: 10,
+                title: "Titanium Precision Watch",
+                image: "images/imageswatch9.jpg",
+                rating: 5,
+                oldPrice: 5999,
+                newPrice: 3999,
+                collection: "Premium",
+                badge: "premium"
+            },
+            {
+                id: 11,
+                title: "Sapphire Crystal Chronograph",
+                image: "images/imageswatch1.jpg",
+                rating: 5,
+                oldPrice: 6999,
+                newPrice: 4499,
+                collection: "Premium",
+                badge: "premium"
+            },
+
+            // LUXURY COLLECTION - Real Watch Images
+            {
+                id: 12,
+                title: "Diamond Encrusted Masterpiece",
+                image: "images/imageswatch2.jpg",
+                rating: 5,
+                oldPrice: 7999,
+                newPrice: 5299,
+                collection: "Luxury",
+                badge: "luxury"
+            },
+            {
+                id: 13,
+                title: "Rose Gold Elegance",
+                image: "images/imageswatch3.jpg",
+                rating: 5,
+                oldPrice: 6500,
+                newPrice: 4299,
+                collection: "Luxury",
+                badge: "luxury"
+            },
+
+            // EXECUTIVE COLLECTION - Real Watch Images
+            {
+                id: 14,
+                title: "Professional Business Master",
+                image: "images/imageswatch5.jpg",
+                rating: 5,
+                oldPrice: 5499,
+                newPrice: 3699,
+                collection: "Executive",
+                badge: "executive"
+            },
+            {
+                id: 15,
+                title: "Precision Perpetual Calendar",
+                image: "images/imageswatch9.jpg",
+                rating: 5,
+                oldPrice: 7500,
+                newPrice: 4999,
+                collection: "Executive",
+                badge: "executive"
+            }
+        ];
+
+        // Cart Data
+        let cart = [];
+
+        // Initialize Products
+        function initializeProducts() {
+            const grid = document.getElementById('products-grid');
+            
+            // Separate products by collection
+            const featured = products.filter(p => p.collection === 'Featured');
+            const premium = products.filter(p => p.collection === 'Premium');
+            const luxury = products.filter(p => p.collection === 'Luxury');
+            const executive = products.filter(p => p.collection === 'Executive');
+
+            let html = '';
+
+            // Featured Products Section
+            if (featured.length > 0) {
+                html += '<div style="grid-column: 1 / -1; margin-bottom: 20px;"><h3 style="color: var(--gold); font-size: 20px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; display: flex; align-items: center; gap: 10px;"><span style="color: var(--accent-blue);">★</span> Your Featured Collection</h3></div>';
+                html += featured.map(product => createProductCard(product)).join('');
+                html += '<div style="grid-column: 1 / -1; height: 1px; background: rgba(212, 175, 55, 0.3); margin: 40px 0;"></div>';
+            }
+
+            // Premium Collection
+            if (premium.length > 0) {
+                html += '<div style="grid-column: 1 / -1; margin: 30px 0 20px;"><h3 style="color: #00d4ff; font-size: 18px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; display: flex; align-items: center; gap: 10px;"><span>◆</span> Premium Collection</h3></div>';
+                html += premium.map(product => createProductCard(product)).join('');
+                html += '<div style="grid-column: 1 / -1; height: 1px; background: rgba(0, 212, 255, 0.2); margin: 40px 0;"></div>';
+            }
+
+            // Luxury Collection
+            if (luxury.length > 0) {
+                html += '<div style="grid-column: 1 / -1; margin: 30px 0 20px;"><h3 style="color: #b833ff; font-size: 18px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; display: flex; align-items: center; gap: 10px;"><span>✦</span> Luxury Collection</h3></div>';
+                html += luxury.map(product => createProductCard(product)).join('');
+                html += '<div style="grid-column: 1 / -1; height: 1px; background: rgba(184, 51, 255, 0.2); margin: 40px 0;"></div>';
+            }
+
+            // Executive Collection
+            if (executive.length > 0) {
+                html += '<div style="grid-column: 1 / -1; margin: 30px 0 20px;"><h3 style="color: #00ff88; font-size: 18px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; display: flex; align-items: center; gap: 10px;"><span>■</span> Executive Collection</h3></div>';
+                html += executive.map(product => createProductCard(product)).join('');
+            }
+
+            grid.innerHTML = html;
+        }
+
+        // Create Product Card HTML
+        function createProductCard(product) {
+            const badgeClass = `badge-${product.badge}`;
+            const badgeText = product.collection === 'Featured' ? '⭐ YOUR WATCH' : product.collection.toUpperCase();
+            const isFeatured = product.collection === 'Featured' ? 'featured' : '';
+            
+            return `
+                <div class="product-card ${isFeatured}">
+                    <div class="product-badge ${badgeClass}">${badgeText}</div>
+                    <div class="product-image">
+                        <img src="${product.image}" alt="${product.title}">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">${product.title}</h3>
+                        <div class="product-rating">
+                            <span class="stars">${'★'.repeat(product.rating)}${'☆'.repeat(5-product.rating)}</span>
+                        </div>
+                        <div class="price-section">
+                            <span class="old-price">Rs. ${product.oldPrice}</span>
+                            <span class="new-price">Rs. ${product.newPrice}</span>
+                        </div>
+                        <div class="product-buttons">
+                            <button class="add-cart-btn" onclick="addToCart(${product.id})">Add to Cart</button>
+                            <button class="whatsapp-btn" onclick="orderOnWhatsApp(${product.id})">WhatsApp</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Add to Cart
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            const existingItem = cart.find(item => item.id === productId);
+
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    id: productId,
+                    title: product.title,
+                    price: product.newPrice,
+                    quantity: 1
+                });
+            }
+
+            updateCart();
+            openCartModal();
+        }
+
+        // Update Cart Display
+        function updateCart() {
+            const cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById('cart-count').textContent = cartCount;
+
+            const container = document.getElementById('cart-items-container');
+            const totalContainer = document.getElementById('cart-total-container');
+
+            if (cart.length === 0) {
+                container.innerHTML = '<div class="cart-empty">Your cart is empty</div>';
+                totalContainer.style.display = 'none';
+                document.getElementById('checkout-btn').disabled = true;
+            } else {
+                container.innerHTML = cart.map((item, index) => `
+                    <div class="cart-item">
+                        <div class="cart-item-info">
+                            <div class="cart-item-name">${item.title}</div>
+                            <div class="cart-item-price">Rs. ${item.price}</div>
+                        </div>
+                        <div class="quantity-control">
+                            <button class="quantity-btn" onclick="updateQuantity(${index}, -1)">−</button>
+                            <span class="quantity">${item.quantity}</span>
+                            <button class="quantity-btn" onclick="updateQuantity(${index}, 1)">+</button>
+                        </div>
+                        <button class="remove-btn" onclick="removeFromCart(${index})">Remove</button>
+                    </div>
+                `).join('');
+
+                const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                document.getElementById('subtotal').textContent = `Rs. ${subtotal}`;
+                document.getElementById('cart-total').textContent = `Rs. ${subtotal}`;
+                totalContainer.style.display = 'block';
+                document.getElementById('checkout-btn').disabled = false;
+                document.getElementById('delivery-cost').textContent = 'Rs. 0';
+            }
+        }
+
+        // Update Quantity
+        function updateQuantity(index, change) {
+            cart[index].quantity += change;
+            if (cart[index].quantity <= 0) {
+                cart.splice(index, 1);
+            }
+            updateCart();
+        }
+
+        // Remove from Cart
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCart();
+        }
+
+        // Open Cart Modal
+        function openCartModal() {
+            document.getElementById('cart-modal').classList.add('active');
+        }
+
+        // Close Cart Modal
+        function closeCartModal() {
+            document.getElementById('cart-modal').classList.remove('active');
+        }
+
+        // Proceed to Checkout
+        function proceedToCheckout() {
+            closeCartModal();
+            document.getElementById('checkout-modal').classList.add('active');
+        }
+
+        // Close Checkout Modal
+        function closeCheckoutModal() {
+            document.getElementById('checkout-modal').classList.remove('active');
+        }
+
+        // Update Delivery Charges
+        function updateDeliveryCharges() {
+            const citySelect = document.getElementById('city');
+            const selectedOption = citySelect.options[citySelect.selectedIndex];
+            const deliveryCharge = parseInt(selectedOption.dataset.charge) || 0;
+
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const total = subtotal + deliveryCharge;
+
+            document.getElementById('delivery-cost').textContent = `Rs. ${deliveryCharge}`;
+            document.getElementById('cart-total').textContent = `Rs. ${total}`;
+            document.getElementById('delivery-display').textContent = `Rs. ${deliveryCharge}`;
+            document.getElementById('order-total-display').textContent = `Rs. ${total}`;
+        }
+
+        // Submit Order
+        function submitOrder(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const city = document.getElementById('city').value;
+            const address = document.getElementById('address').value;
+            const payment = document.querySelector('input[name="payment"]:checked').value;
+
+            const citySelect = document.getElementById('city');
+            const selectedOption = citySelect.options[citySelect.selectedIndex];
+            const deliveryCharge = parseInt(selectedOption.dataset.charge) || 0;
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const total = subtotal + deliveryCharge;
+
+            const orderSummary = cart.map(item => `${item.title} (Qty: ${item.quantity}) - Rs. ${item.price * item.quantity}`).join('\n');
+
+            let message = `Assalam O Alaikum! I want to place an order:\n\n`;
+            message += `ORDER DETAILS:\n${orderSummary}\n\n`;
+            message += `CUSTOMER INFORMATION:\n`;
+            message += `Name: ${name}\n`;
+            message += `Phone: ${phone}\n`;
+            message += `City: ${city}\n`;
+            message += `Address: ${address}\n\n`;
+            message += `PAYMENT DETAILS:\n`;
+            message += `Subtotal: Rs. ${subtotal}\n`;
+            message += `Delivery Charges: Rs. ${deliveryCharge}\n`;
+            message += `Total Amount: Rs. ${total}\n`;
+            message += `Payment Method: ${payment === 'cod' ? 'Cash On Delivery' : 'Credit/Debit Card'}\n\n`;
+            message += `Please confirm my order. Thank you!`;
+
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = `https://wa.me/923446110659?text=${encodedMessage}`;
+            
+            window.open(whatsappUrl, '_blank');
+
+            // Clear form and close modal
+            document.querySelector('form').reset();
+            closeCheckoutModal();
+            cart = [];
+            updateCart();
+
+            alert('Order sent to WhatsApp! Our team will confirm shortly.');
+        }
+
+        // Order on WhatsApp
+        function orderOnWhatsApp(productId) {
+            const product = products.find(p => p.id === productId);
+            let message = `Assalam O Alaikum!\n\n`;
+            message += `I want to order:\n\n`;
+            message += `Product: ${product.title}\n`;
+            message += `Price: Rs. ${product.newPrice}\n`;
+            message += `Quantity: 1\n\n`;
+            message += `Please provide delivery details and payment options.`;
+
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = `https://wa.me/923446110659?text=${encodedMessage}`;
+            
+            window.open(whatsappUrl, '_blank');
+        }
+
+        // Close Modal on Outside Click
+        window.onclick = function(event) {
+            const cartModal = document.getElementById('cart-modal');
+            const checkoutModal = document.getElementById('checkout-modal');
+            
+            if (event.target === cartModal) {
+                closeCartModal();
+            }
+            if (event.target === checkoutModal) {
+                closeCheckoutModal();
+            }
+        }
+
+        // Initialize on Load
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeProducts();
+        });
+    </script>
+</body>
+</html>
