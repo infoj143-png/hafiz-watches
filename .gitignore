@@ -1,0 +1,17 @@
+# Node dependencies
+node_modules/
+
+# Firebase config
+.firebase
+
+# Vercel deployment
+.vercel
+
+# OS files
+.DS_Store
+Thumbs.DB
+.AppleDual.store
+
+# EDItors *
+.vscode/
+.vssodes/*
