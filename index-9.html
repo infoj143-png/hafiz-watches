@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Hafiz Watches - Premium luxury watches in Pakistan with COD and WhatsApp ordering." />
+  <title>Hafiz Watches - Premium Luxury Watches</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    :root{--dark:#080808;--card:#111a18;--gold:#d4af37;--light:#f4e4c1;--muted:#aaa;--green:#00d66b;--blue:#00d4ff;--purple:#9d3cff;--gold-deep:#9c7a3d;--copper:#b5652d;--glass:rgba(18,16,13,.4);--hair:rgba(212,175,55,.25)}
+    body{font-family:Segoe UI,Tahoma,sans-serif;background:radial-gradient(circle at top right,rgba(212,175,55,.16),transparent 30%),linear-gradient(135deg,#050505,#111);color:#eee;overflow-x:hidden}
+    .container{max-width:1200px;margin:auto;padding:0 18px}
+    header{position:sticky;top:0;z-index:50;background:rgba(5,5,5,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(212,175,55,.25)}
+    .nav{height:62px;display:flex;align-items:center;justify-content:space-between}
+    .logo{font-weight:900;letter-spacing:1.5px;color:var(--gold)}
+    nav{display:flex;gap:18px;align-items:center}
+    nav a{color:#eee;text-decoration:none;font-size:14px}
+    .cart{position:relative;cursor:pointer}
+    .badge{position:absolute;top:-10px;right:-13px;background:var(--blue);color:#000;border-radius:999px;padding:2px 7px;font-size:12px;font-weight:800}
+    .hero{min-height:78vh;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;padding:70px 0}
+    .hero h1{font-size:clamp(36px,6vw,72px);line-height:1.05;background:linear-gradient(135deg,var(--gold),var(--light),#fff);-webkit-background-clip:text;color:transparent}
+    .hero p{color:var(--muted);margin:18px 0 28px}
+    .btn{border:0;border-radius:999px;padding:13px 22px;font-weight:800;cursor:pointer;background:linear-gradient(135deg,var(--gold),var(--light));color:#111;box-shadow:0 10px 30px rgba(212,175,55,.25)}
+    .btn.whatsapp{background:linear-gradient(135deg,#13c85b,#079943);color:white}
+    .heroBox{height:440px;border:1px solid rgba(212,175,55,.35);border-radius:24px;background:linear-gradient(135deg,rgba(212,175,55,.08),rgba(0,212,255,.08));display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
+    .heroBox img{width:90%;height:90%;object-fit:contain;filter:drop-shadow(0 25px 35px rgba(212,175,55,.25));animation:float 4s ease-in-out infinite}
+    @keyframes float{50%{transform:translateY(-14px)}}
+    .banner{margin:20px 0 50px;text-align:center;border:1px solid rgba(0,214,107,.3);background:rgba(0,214,107,.08);border-radius:18px;padding:18px;color:var(--green);font-weight:800}
+    .sectionTitle{text-align:center;margin:60px 0 35px}
+    .sectionTitle h2{font-size:38px;color:var(--gold)}
+    .sectionTitle p{color:var(--muted)}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
+    .card{background:linear-gradient(135deg,rgba(212,175,55,.06),rgba(0,212,255,.06));border:1px solid rgba(212,175,55,.22);border-radius:18px;padding:16px;transition:.3s}
+    .card:hover{transform:translateY(-8px);border-color:var(--gold);box-shadow:0 18px 40px rgba(212,175,55,.18)}
+    .imgBox{height:220px;border-radius:14px;background:#101b19;overflow:hidden;margin-bottom:15px}
+    .imgBox img{width:100%;height:100%;object-fit:contain;transition:.3s}
+    .card:hover img{transform:scale(1.06)}
+    .stars{color:var(--gold);letter-spacing:2px}
+    .price{display:flex;gap:12px;align-items:center;margin:10px 0 14px}
+    .old{text-decoration:line-through;color:#777}
+    .new{color:var(--green);font-size:22px;font-weight:900}
+    .row{display:flex;gap:10px;flex-wrap:wrap}
+    .row .btn{flex:1;border-radius:10px;padding:11px 12px;font-size:13px}
+    .trust{margin:70px 0;background:rgba(212,175,55,.06);border:1px solid rgba(212,175,55,.18);border-radius:22px;padding:34px}
+    .trust .item{text-align:center;padding:15px}
+    .trust b{display:block;color:var(--gold);margin:10px 0}
+    footer{background:#0b0b0b;border-top:1px solid rgba(212,175,55,.25);padding:45px 0;color:var(--muted)}
+    footer h3{color:var(--gold);margin-bottom:12px}
+    .modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.72);backdrop-filter:blur(5px);z-index:100;align-items:center;justify-content:center;padding:18px}
+    .modal.active{display:flex}
+    .modalBox{max-width:620px;width:100%;max-height:90vh;overflow:auto;background:#111;border:1px solid rgba(212,175,55,.35);border-radius:20px;padding:24px;position:relative}
+    .close{position:absolute;right:15px;top:10px;background:none;border:0;color:#fff;font-size:28px}
+    .cartItem{display:grid;grid-template-columns:1fr auto;gap:10px;padding:12px;border-bottom:1px solid rgba(212,175,55,.15)}
+    input,select,textarea{width:100%;padding:12px;border-radius:10px;border:1px solid rgba(212,175,55,.3);background:#070707;color:#fff;margin:7px 0}
+    label{color:var(--gold);font-size:13px}
+    .total{border-top:1px solid rgba(212,175,55,.25);padding-top:14px;margin-top:14px;font-size:20px;color:var(--gold);font-weight:900;display:flex;justify-content:space-between}
+    @media(max-width:760px){.hero{grid-template-columns:1fr;padding-top:40px}.heroBox{height:330px}nav a{display:none}.grid{grid-template-columns:1fr}.nav{height:58px}}
+
+    /* ===== Cinematic scroll hero (scoped to .cine-hero) ===== */
+    .cine-hero{position:relative;background:var(--dark);}
+    .cine-hero #scene-canvas{position:fixed;inset:0;width:100%;height:100%;z-index:0;display:block;}
+    .cine-hero .grain{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.05;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+    .cine-hero .vignette{position:fixed;inset:0;z-index:1;pointer-events:none;background:radial-gradient(ellipse at center, transparent 45%, rgba(0,0,0,.55) 100%);}
+    #preloader{position:fixed;inset:0;z-index:200;background:var(--dark);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;transition:opacity .8s ease,visibility .8s ease;}
+    #preloader.hidden{opacity:0;visibility:hidden;pointer-events:none;}
+    .preload-mark{font-family:'Playfair Display',serif;font-size:1.2rem;letter-spacing:.14em;color:var(--light);opacity:.9;}
+    .preload-bar{width:140px;height:1px;background:rgba(212,175,55,.2);position:relative;overflow:hidden;}
+    .preload-bar::after{content:'';position:absolute;left:-40%;top:0;bottom:0;width:40%;background:var(--gold);animation:loadsweep 1.1s ease-in-out infinite;}
+    @keyframes loadsweep{0%{left:-40%;}100%{left:100%;}}
+    .cine-hero .progress-rail{position:fixed;right:18px;top:50%;transform:translateY(-50%);width:2px;height:120px;background:rgba(212,175,55,.18);z-index:10;}
+    .cine-hero .progress-fill{width:100%;background:var(--gold);height:0%;}
+    .cine-hero .swatches{position:fixed;left:6vw;bottom:30px;z-index:10;display:flex;align-items:center;gap:14px;pointer-events:auto;}
+    .cine-hero .swatch-label{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(244,228,193,.55);margin-right:2px;font-family:'Jost',sans-serif;}
+    .cine-hero .swatch{width:20px;height:20px;border-radius:50%;border:1px solid rgba(244,228,193,.35);cursor:pointer;transition:transform .25s ease,border-color .25s ease;}
+    .cine-hero .swatch:hover{transform:scale(1.18);}
+    .cine-hero .swatch.active{border-color:var(--light);}
+    .cine-hero section{min-height:100vh;display:flex;align-items:center;padding:0 6vw;position:relative;}
+    .cine-hero #cineHeroTop{min-height:100vh;}
+    .cine-hero #cineAssembly{min-height:120vh;}
+    .cine-hero #cineShowcase{min-height:100vh;justify-content:flex-end;}
+    .cine-hero #cineDetail{min-height:120vh;}
+    .cine-hero #cineFinale{min-height:100vh;justify-content:center;flex-direction:column;text-align:center;}
+    .cine-hero .panel{max-width:520px;opacity:0;transform:translateY(28px);transition:opacity .9s ease,transform .9s ease;pointer-events:none;font-family:'Jost',sans-serif;}
+    .cine-hero .panel.active{opacity:1;transform:translateY(0);}
+    .cine-hero .panel-glass{background:var(--glass);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--hair);border-radius:2px;padding:34px 36px;}
+    .cine-hero .eyebrow{font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:block;}
+    .cine-hero h1,.cine-hero h2{font-family:'Playfair Display',serif;font-weight:600;line-height:1.08;color:var(--light);}
+    .cine-hero #cineHeroTop h1{font-size:clamp(2.2rem,6vw,4rem);}
+    .cine-hero h2{font-size:clamp(1.7rem,4vw,2.4rem);margin-bottom:16px;}
+    .cine-hero .body-copy{font-size:.96rem;line-height:1.65;color:rgba(244,228,193,.78);font-weight:300;margin-top:14px;}
+    .cine-hero #cineHeroTop .body-copy{max-width:420px;}
+    .cine-hero .rule{width:46px;height:1px;background:var(--gold-deep);margin:20px 0;}
+    .cine-hero #cineShowcase .panel{text-align:right;margin-left:auto;}
+    .cine-hero #cineShowcase .rule{margin-left:auto;}
+    .cine-hero .cta-btn{pointer-events:auto;display:inline-flex;align-items:center;gap:10px;margin-top:26px;padding:15px 30px;background:var(--gold);color:#1a1408;font-family:'Jost',sans-serif;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;text-decoration:none;border:0;border-radius:1px;cursor:pointer;transition:background .3s ease,transform .3s ease;}
+    .cine-hero .cta-btn:hover{background:#e6c584;transform:translateY(-1px);}
+    .cine-hero #cineFinale .panel{max-width:640px;margin:0 auto;pointer-events:auto;}
+    .cine-hero #cineFinale .eyebrow{text-align:center;}
+    .cine-hero .finale-thumb{width:64px;height:64px;border-radius:50%;overflow:hidden;border:1px solid var(--hair);margin:0 auto 18px;}
+    .cine-hero .finale-thumb img{width:100%;height:100%;object-fit:cover;}
+    .cine-hero .scroll-cue{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);font-size:.65rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(244,228,193,.55);display:flex;flex-direction:column;align-items:center;gap:8px;z-index:5;font-family:'Jost',sans-serif;}
+    .cine-hero .scroll-cue::after{content:'';width:1px;height:34px;background:linear-gradient(var(--gold),transparent);animation:pulse 1.8s ease-in-out infinite;}
+    @keyframes pulse{0%,100%{opacity:.3;}50%{opacity:1;}}
+    @media (prefers-reduced-motion: reduce){.cine-hero .panel{transition:none;}.cine-hero .scroll-cue::after{animation:none;}}
+    @media (max-width:720px){
+      .cine-hero .progress-rail{display:none;}
+      .cine-hero #cineShowcase{justify-content:flex-start;}
+      .cine-hero #cineShowcase .panel{text-align:left;margin-left:0;}
+      .cine-hero #cineShowcase .rule{margin-left:0;}
+      .cine-hero .panel-glass{padding:26px 24px;}
+    }
+  </style>
+</head>
+
+<body>
+<header>
+  <div class="container nav">
+    <div class="logo">⌚ HAFIZ WATCHES</div>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#collection">Collection</a>
+      <a href="#reviews">Reviews</a>
+      <a href="admin.html">Admin</a>
+      <span class="cart" onclick="openCart()">🛒<span class="badge" id="cartCount">0</span></span>
+    </nav>
+  </div>
+</header>
+
+<div class="cine-hero" id="home">
+
+  <div id="preloader">
+    <div class="preload-mark">HAFIZ WATCHES</div>
+    <div class="preload-bar"></div>
+  </div>
+
+  <canvas id="scene-canvas"></canvas>
+  <div class="grain"></div>
+  <div class="vignette"></div>
+  <div class="progress-rail"><div class="progress-fill" id="progressFill"></div></div>
+  <div class="swatches">
+    <span class="swatch-label">Finish</span>
+    <div class="swatch active" data-color="gold" style="background:#d4af6a;"></div>
+    <div class="swatch" data-color="silver" style="background:#c7cdd1;"></div>
+    <div class="swatch" data-color="rose" style="background:#d9a68c;"></div>
+  </div>
+
+  <section id="cineHeroTop">
+    <div class="panel active" style="transition-delay:.3s;">
+      <span class="eyebrow">Hafiz Watches — Pakistan</span>
+      <h1>Every second,<br>considered.</h1>
+      <p class="body-copy">Premium luxury watches, built the way they're worn — deliberately, unhurried, exact. Scroll to see one come together.</p>
+    </div>
+    <div class="scroll-cue">Scroll</div>
+  </section>
+
+  <section id="cineAssembly">
+    <div class="panel" data-panel>
+      <div class="panel-glass">
+        <span class="eyebrow">The Build</span>
+        <h2>Assembled from<br>first principles</h2>
+        <div class="rule"></div>
+        <p class="body-copy">Case, bezel, crystal, hands — each part finished before it ever meets the others. Nothing is an afterthought.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="cineShowcase">
+    <div class="panel" data-panel>
+      <div class="panel-glass">
+        <span class="eyebrow">The Form</span>
+        <h2>One line,<br>every angle</h2>
+        <div class="rule"></div>
+        <p class="body-copy">A silhouette that holds under any light, from any side — designed to look right whichever way you turn it.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="cineDetail">
+    <div class="panel" data-panel>
+      <div class="panel-glass">
+        <span class="eyebrow">The Dial</span>
+        <h2>Closer than<br>a glance</h2>
+        <div class="rule"></div>
+        <p class="body-copy">Applied indices, a clean sunburst face, a crystal ground for clarity. Details built to survive close inspection.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="cineFinale">
+    <div class="panel" data-panel>
+      <div class="panel-glass">
+        <div class="finale-thumb"><img id="heroImg" src="images/imageswatch1.jpg" alt="Hafiz Watches"></div>
+        <span class="eyebrow">Hafiz Watches</span>
+        <h2>Your piece is<br>right below.</h2>
+        <p class="body-copy">Fifteen designs, ready to ship across Pakistan. Cash on delivery, or order straight through WhatsApp.</p>
+        <button class="cta-btn" onclick="document.getElementById('collection').scrollIntoView({behavior:'smooth'})">View the Collection ↓</button>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<div class="banner container">🎁 Free Delivery on Orders Above Rs.5000</div>
+
+<main class="container">
+
+  <section id="collection">
+    <div class="sectionTitle">
+      <h2>Featured Collection</h2>
+      <p>Premium designs selected for Hafiz Watches customers</p>
+    </div>
+    <div class="grid" id="productsGrid">
+      <p style="color:#aaa;text-align:center">Loading products...</p>
+    </div>
+  </section>
+
+  <section class="trust grid">
+    <div class="item">✨<b>Premium Quality</b><span>Best quality watches</span></div>
+    <div class="item">🚚<b>Fast Delivery</b><span>Delivery across Pakistan</span></div>
+    <div class="item">🔒<b>Secure Payments</b><span>COD and card options</span></div>
+    <div class="item">💵<b>Cash On Delivery</b><span>Pay when you receive</span></div>
+  </section>
+
+  <section id="reviews">
+    <div class="sectionTitle">
+      <h2>Customer Reviews</h2>
+      <p>What customers say</p>
+    </div>
+    <div class="grid">
+      <div class="card"><div class="stars">★★★★★</div><p>Watch quality is excellent and delivery was fast.</p><small>- Ahmed, Lahore</small></div>
+      <div class="card"><div class="stars">★★★★★</div><p>Premium look in affordable price. Recommended.</p><small>- Bilal, Gujranwala</small></div>
+      <div class="card"><div class="stars">★★★★★</div><p>WhatsApp order and COD made it very easy.</p><small>- Hassan, Islamabad</small></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container grid">
+    <div><h3>About Hafiz Watches</h3><p>Premium watch store with affordable prices and fast delivery.</p></div>
+    <div><h3>Contact</h3><p>WhatsApp: +92 344 6110659</p><p>Email: hafizwatches@gmail.com</p></div>
+    <div><h3>Payment</h3><p>✅ Cash on Delivery</p><p>💳 Credit/Debit Card</p></div>
+  </div>
+</footer>
+
+<div class="modal" id="cartModal">
+  <div class="modalBox">
+    <button class="close" onclick="closeCart()">×</button>
+    <h2 style="color:#d4af37;margin-bottom:15px">Shopping Cart</h2>
+    <div id="cartItems"></div>
+    <div class="total"><span>Total</span><span id="cartTotal">Rs. 0</span></div>
+    <button class="btn" style="width:100%;margin-top:18px" onclick="checkout()">Proceed to Checkout</button>
+  </div>
+</div>
+
+<div class="modal" id="checkoutModal">
+  <div class="modalBox">
+    <button class="close" onclick="closeCheckout()">×</button>
+    <h2 style="color:#d4af37;margin-bottom:15px">Checkout</h2>
+    <form id="orderForm">
+      <label>Name</label>
+      <input id="name" required>
+
+      <label>Phone</label>
+      <input id="phone" required>
+
+      <label>City</label>
+      <select id="city" required></select>
+
+      <label>Full Address</label>
+      <textarea id="address" required></textarea>
+
+      <label>Payment Method</label>
+      <select id="payment">
+        <option value="Cash On Delivery">Cash On Delivery</option>
+        <option value="Credit/Debit Card">Credit/Debit Card</option>
+      </select>
+
+      <div class="total"><span>Grand Total</span><span id="grandTotal">Rs. 0</span></div>
+      <button class="btn" style="width:100%;margin-top:15px">Complete Order</button>
+    </form>
+  </div>
+</div>
+
+<script type="module">
+import { db } from "./firebase-config.js";
+import {
+  collection,
+  getDocs,
+  addDoc,
+  serverTimestamp
+} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
+
+const whatsapp = "923446110659";
+
+let products = [];
+let cart = [];
+let delivery = {
+  Gujranwala: 200,
+  Lahore: 250,
+  Faisalabad: 250,
+  Islamabad: 300,
+  Rawalpindi: 300,
+  Karachi: 350,
+  Peshawar: 350,
+  Quetta: 400
+};
+
+function $(id) {
+  return document.getElementById(id);
+}
+
+async function loadProducts() {
+  try {
+    const snap = await getDocs(collection(db, "products"));
+    products = [];
+
+    snap.forEach(docSnap => {
+      const p = docSnap.data();
+
+      products.push({
+        id: docSnap.id,
+        title: p.title || p.name || "Untitled Watch",
+        image: p.image || "images/imageswatch1.jpg",
+        oldPrice: Number(p.oldPrice || 0),
+        newPrice: Number(p.newPrice || p.price || 0),
+        stock: Number(p.stock || 0),
+        status: p.status || "active"
+      });
+    });
+
+    products = products.filter(p => p.status !== "inactive");
+
+    if (!products.length) {
+      $("productsGrid").innerHTML = "<p style='color:#aaa'>No products found. Add product from Admin Panel.</p>";
+      return;
+    }
+
+    renderProducts();
+    rotateHero();
+
+  } catch (error) {
+    console.error(error);
+    $("productsGrid").innerHTML = "<p style='color:red'>Products loading error. Firebase config check karo.</p>";
+  }
+}
+
+async function loadDeliveryCharges() {
+  try {
+    const snap = await getDocs(collection(db, "deliveryCharges"));
+
+    if (!snap.empty) {
+      snap.forEach(docSnap => {
+        const data = docSnap.data();
+        delivery[docSnap.id] = Number(data.charge || 0);
+      });
+    }
+
+    renderCities();
+
+  } catch (error) {
+    console.error(error);
+    renderCities();
+  }
+}
+
+function renderProducts() {
+  $("productsGrid").innerHTML = products.map(p => `
+    <div class="card">
+      <div class="imgBox">
+        <img src="${p.image}" alt="${p.title}" onerror="this.src='images/imageswatch1.jpg'">
+      </div>
+      <h3>${p.title}</h3>
+      <div class="stars">★★★★★</div>
+      <p style="color:#aaa;margin-top:6px">Stock: ${p.stock}</p>
+      <div class="price">
+        ${p.oldPrice ? `<span class="old">Rs. ${p.oldPrice}</span>` : ""}
+        <span class="new">Rs. ${p.newPrice}</span>
+      </div>
+      <div class="row">
+        <button class="btn" onclick="addToCart('${p.id}')">Add to Cart</button>
+        <button class="btn whatsapp" onclick="quickWhatsApp('${p.id}')">WhatsApp</button>
+      </div>
+    </div>
+  `).join("");
+}
+
+function renderCities() {
+  $("city").innerHTML = Object.entries(delivery).map(([city, charge]) => `
+    <option value="${city}">${city} - Rs. ${charge}</option>
+  `).join("");
+
+  $("city").onchange = updateTotals;
+  updateTotals();
+}
+
+function rotateHero() {
+  let i = 0;
+  setInterval(() => {
+    if (!products.length) return;
+    i = (i + 1) % products.length;
+    $("heroImg").src = products[i].image;
+  }, 3500);
+}
+
+window.addToCart = function(id) {
+  const p = products.find(x => x.id === id);
+  if (!p) return;
+
+  const item = cart.find(x => x.id === id);
+
+  if (item) {
+    item.qty++;
+  } else {
+    cart.push({
+      id: p.id,
+      title: p.title,
+      price: Number(p.newPrice),
+      qty: 1
+    });
+  }
+
+  updateCart();
+  openCart();
+};
+
+window.quickWhatsApp = function(id) {
+  const p = products.find(x => x.id === id);
+  if (!p) return;
+
+  const msg = `Assalam O Alaikum!
+I want to order:
+
+Product: ${p.title}
+Price: Rs. ${p.newPrice}
+Quantity: 1`;
+
+  window.open(`https://wa.me/${whatsapp}?text=${encodeURIComponent(msg)}`, "_blank");
+};
+
+function updateCart() {
+  $("cartCount").textContent = cart.reduce((s, i) => s + i.qty, 0);
+
+  if (!cart.length) {
+    $("cartItems").innerHTML = "<p style='color:#aaa'>Cart is empty</p>";
+  } else {
+    $("cartItems").innerHTML = cart.map((i, n) => `
+      <div class="cartItem">
+        <div>
+          <b>${i.title}</b><br>
+          <span style="color:#d4af37">Rs. ${i.price} x ${i.qty}</span>
+        </div>
+        <div>
+          <button class="btn" onclick="qty(${n},1)">+</button>
+          <button class="btn" onclick="qty(${n},-1)">-</button>
+        </div>
+      </div>
+    `).join("");
+  }
+
+  updateTotals();
+}
+
+window.qty = function(index, change) {
+  cart[index].qty += change;
+
+  if (cart[index].qty <= 0) {
+    cart.splice(index, 1);
+  }
+
+  updateCart();
+};
+
+function subtotal() {
+  return cart.reduce((s, i) => s + i.price * i.qty, 0);
+}
+
+function currentDelivery() {
+  const city = $("city") ? $("city").value : "Gujranwala";
+  return Number(delivery[city] || 0);
+}
+
+function updateTotals() {
+  const sub = subtotal();
+  const grand = sub + currentDelivery();
+
+  if ($("cartTotal")) $("cartTotal").textContent = "Rs. " + sub;
+  if ($("grandTotal")) $("grandTotal").textContent = "Rs. " + grand;
+}
+
+window.openCart = function() {
+  $("cartModal").classList.add("active");
+};
+
+window.closeCart = function() {
+  $("cartModal").classList.remove("active");
+};
+
+window.checkout = function() {
+  if (!cart.length) {
+    alert("Cart is empty");
+    return;
+  }
+
+  closeCart();
+  $("checkoutModal").classList.add("active");
+  updateTotals();
+};
+
+window.closeCheckout = function() {
+  $("checkoutModal").classList.remove("active");
+};
+
+$("orderForm").onsubmit = async function(e) {
+  e.preventDefault();
+
+  const order = {
+    customerName: $("name").value,
+    phone: $("phone").value,
+    city: $("city").value,
+    address: $("address").value,
+    paymentMethod: $("payment").value,
+    items: cart,
+    subtotal: subtotal(),
+    deliveryCharge: currentDelivery(),
+    total: subtotal() + currentDelivery(),
+    status: "Pending",
+    createdAt: serverTimestamp()
+  };
+
+  try {
+    await addDoc(collection(db, "orders"), order);
+  } catch (error) {
+    console.error(error);
+    alert("Order Firebase mein save nahi hua. Rules/config check karo.");
+  }
+
+  const items = cart.map(i => `${i.title} x${i.qty} = Rs. ${i.price * i.qty}`).join("\n");
+
+  const msg = `Assalam O Alaikum!
+I want to place an order:
+
+${items}
+
+Name: ${order.customerName}
+Phone: ${order.phone}
+City: ${order.city}
+Address: ${order.address}
+Payment: ${order.paymentMethod}
+Subtotal: Rs. ${order.subtotal}
+Delivery: Rs. ${order.deliveryCharge}
+Total: Rs. ${order.total}`;
+
+  window.open(`https://wa.me/${whatsapp}?text=${encodeURIComponent(msg)}`, "_blank");
+
+  alert("Order sent successfully.");
+  cart = [];
+  updateCart();
+  closeCheckout();
+  e.target.reset();
+};
+
+loadDeliveryCharges();
+loadProducts();
+updateCart();
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+(function(){
+gsap.registerPlugin(ScrollTrigger);
+
+const canvas = document.getElementById('scene-canvas');
+const renderer = new THREE.WebGLRenderer({canvas, antialias:true, alpha:true});
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.setSize(window.innerWidth, window.innerHeight);
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(38, window.innerWidth/window.innerHeight, 0.1, 100);
+camera.position.set(0, 0, 6);
+
+const key = new THREE.DirectionalLight(0xffe3b0, 2.2);
+key.position.set(3, 4, 5);
+scene.add(key);
+const rim = new THREE.DirectionalLight(0xd4af6a, 1.4);
+rim.position.set(-4, -2, -3);
+scene.add(rim);
+const amb = new THREE.AmbientLight(0x40372a, 1.1);
+scene.add(amb);
+
+const FINISHES = {
+  gold:   {main:0xd4af6a, deep:0x9c7a3d},
+  silver: {main:0xc7cdd1, deep:0x8b9297},
+  rose:   {main:0xd9a68c, deep:0xa8735c},
+};
+const goldMat = new THREE.MeshStandardMaterial({color:FINISHES.gold.main, metalness:0.9, roughness:0.28});
+const darkGoldMat = new THREE.MeshStandardMaterial({color:FINISHES.gold.deep, metalness:0.85, roughness:0.35});
+const dialMat = new THREE.MeshStandardMaterial({color:0x141210, metalness:0.6, roughness:0.4});
+const crystalMat = new THREE.MeshPhysicalMaterial({color:0xffffff, transparent:true, opacity:0.18, roughness:0.05, transmission:0.9, metalness:0});
+const handMat = new THREE.MeshStandardMaterial({color:0xf3ead9, metalness:0.7, roughness:0.3});
+const strapMat = new THREE.MeshStandardMaterial({color:0x1c1712, metalness:0.2, roughness:0.75});
+const markerMat = new THREE.MeshStandardMaterial({color:FINISHES.gold.main, metalness:0.9, roughness:0.3});
+
+function setFinish(name){
+  const f = FINISHES[name];
+  if(!f) return;
+  goldMat.color.setHex(f.main);
+  darkGoldMat.color.setHex(f.deep);
+  markerMat.color.setHex(f.main);
+}
+
+const watch = new THREE.Group();
+scene.add(watch);
+
+function addPart(mesh, restPos, explodeDir){
+  mesh.userData.rest = restPos.clone();
+  mesh.userData.explode = explodeDir.clone();
+  mesh.position.copy(restPos);
+  watch.add(mesh);
+  return mesh;
+}
+
+const caseBody = new THREE.Mesh(new THREE.CylinderGeometry(1.3, 1.3, 0.42, 64), goldMat);
+caseBody.rotation.x = Math.PI/2;
+addPart(caseBody, new THREE.Vector3(0,0,0), new THREE.Vector3(0,0,-2.2));
+
+const bezel = new THREE.Mesh(new THREE.TorusGeometry(1.32, 0.14, 24, 100), darkGoldMat);
+addPart(bezel, new THREE.Vector3(0,0,0.22), new THREE.Vector3(0,0,2.6));
+
+const dial = new THREE.Mesh(new THREE.CircleGeometry(1.12, 64), dialMat);
+addPart(dial, new THREE.Vector3(0,0,0.23), new THREE.Vector3(0,0,-1.4));
+
+const crystal = new THREE.Mesh(new THREE.CircleGeometry(1.2, 64), crystalMat);
+addPart(crystal, new THREE.Vector3(0,0,0.36), new THREE.Vector3(0,0,3.4));
+
+const hourHand = new THREE.Mesh(new THREE.BoxGeometry(0.07,0.55,0.02), handMat);
+hourHand.rotation.z = 0.9;
+addPart(hourHand, new THREE.Vector3(0.13,0.13,0.3), new THREE.Vector3(0.6,0.6,1.8));
+
+const minHand = new THREE.Mesh(new THREE.BoxGeometry(0.05,0.82,0.02), handMat);
+minHand.rotation.z = -0.5;
+addPart(minHand, new THREE.Vector3(-0.1,0.2,0.31), new THREE.Vector3(-0.7,0.9,1.8));
+
+const crown = new THREE.Mesh(new THREE.CylinderGeometry(0.12,0.12,0.22,24), goldMat);
+crown.rotation.z = Math.PI/2;
+addPart(crown, new THREE.Vector3(1.42,0,0), new THREE.Vector3(3.0,0,0.6));
+
+const markerGroup = new THREE.Group();
+for(let i=0;i<12;i++){
+  const angle = (i/12) * Math.PI*2;
+  const isCardinal = i % 3 === 0;
+  const marker = new THREE.Mesh(
+    new THREE.BoxGeometry(isCardinal?0.05:0.035, isCardinal?0.16:0.1, 0.02),
+    markerMat
+  );
+  const r = 0.92;
+  marker.position.set(Math.sin(angle)*r, Math.cos(angle)*r, 0);
+  marker.rotation.z = -angle;
+  markerGroup.add(marker);
+}
+addPart(markerGroup, new THREE.Vector3(0,0,0.31), new THREE.Vector3(0,0,-1.9));
+
+const secHand = new THREE.Mesh(new THREE.BoxGeometry(0.02,0.95,0.015), new THREE.MeshStandardMaterial({color:0xb5652d, metalness:0.6, roughness:0.3}));
+secHand.geometry.translate(0,0.4,0);
+addPart(secHand, new THREE.Vector3(0,0,0.33), new THREE.Vector3(0.3,-0.8,2.0));
+
+const strapTop = new THREE.Mesh(new THREE.BoxGeometry(0.75,0.9,0.16), strapMat);
+addPart(strapTop, new THREE.Vector3(0,1.55,-0.02), new THREE.Vector3(0,3.4,-1.2));
+const strapBottom = new THREE.Mesh(new THREE.BoxGeometry(0.75,0.9,0.16), strapMat);
+addPart(strapBottom, new THREE.Vector3(0,-1.55,-0.02), new THREE.Vector3(0,-3.4,-1.2));
+
+const DUST_COUNT = 220;
+const dustGeo = new THREE.BufferGeometry();
+const dustPos = new Float32Array(DUST_COUNT*3);
+for(let i=0;i<DUST_COUNT;i++){
+  dustPos[i*3]   = (Math.random()-0.5) * 14;
+  dustPos[i*3+1] = (Math.random()-0.5) * 10;
+  dustPos[i*3+2] = (Math.random()-0.5) * 10 - 2;
+}
+dustGeo.setAttribute('position', new THREE.BufferAttribute(dustPos, 3));
+const dustMat = new THREE.PointsMaterial({color:0xd4af6a, size:0.018, transparent:true, opacity:0.5, sizeAttenuation:true});
+const dust = new THREE.Points(dustGeo, dustMat);
+scene.add(dust);
+
+function clamp01(v){return Math.max(0, Math.min(1, v));}
+function mapRange(t,a,b){return clamp01((t-a)/(b-a));}
+function smooth(t){return t*t*(3-2*t);}
+
+let baseRotY = 0, baseRotX = 0;
+
+function updateScene(t){
+  const explode = 1 - smooth(mapRange(t, 0.0, 0.22));
+  watch.children.forEach(mesh=>{
+    const rest = mesh.userData.rest;
+    const dir = mesh.userData.explode;
+    mesh.position.set(rest.x + dir.x*explode, rest.y + dir.y*explode, rest.z + dir.z*explode);
+  });
+
+  baseRotY = t * Math.PI * 2.6;
+  baseRotX = Math.sin(t*Math.PI) * 0.12;
+
+  let camZ;
+  if (t < 0.22){
+    camZ = 6.4 - smooth(mapRange(t,0,0.22)) * 2.2;
+  } else if (t < 0.55){
+    camZ = 4.2;
+  } else if (t < 0.78){
+    camZ = 4.2 - smooth(mapRange(t,0.55,0.78)) * 2.6;
+  } else {
+    camZ = 1.6 + smooth(mapRange(t,0.78,1.0)) * 1.9;
+  }
+  camera.position.z = camZ;
+  camera.position.y = Math.sin(t*Math.PI*2) * 0.08;
+  camera.lookAt(0,0,0);
+
+  const fill = document.getElementById('progressFill');
+  if (fill) fill.style.height = (t*100) + '%';
+}
+updateScene(0);
+
+let rawProgress = 0;
+ScrollTrigger.create({
+  trigger: ".cine-hero",
+  start: "top top",
+  end: "bottom bottom",
+  scrub: false,
+  onUpdate: self => { rawProgress = self.progress; }
+});
+
+document.querySelectorAll('.cine-hero [data-panel]').forEach(panel=>{
+  ScrollTrigger.create({
+    trigger: panel.closest('section'),
+    start: "top 65%",
+    end: "bottom 35%",
+    onEnter: ()=>panel.classList.add('active'),
+    onEnterBack: ()=>panel.classList.add('active'),
+    onLeave: ()=>panel.classList.remove('active'),
+    onLeaveBack: ()=>panel.classList.remove('active'),
+  });
+});
+
+let mouseX = 0, mouseY = 0;
+window.addEventListener('pointermove', e=>{
+  mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+  mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+});
+let parallaxX = 0, parallaxY = 0;
+let displayedProgress = 0;
+
+document.querySelectorAll('.cine-hero .swatch').forEach(sw=>{
+  sw.addEventListener('click', ()=>{
+    document.querySelectorAll('.cine-hero .swatch').forEach(s=>s.classList.remove('active'));
+    sw.classList.add('active');
+    setFinish(sw.dataset.color);
+  });
+});
+
+const clock = new THREE.Clock();
+function tick(){
+  const dt = clock.getDelta();
+  const elapsed = clock.getElapsedTime();
+
+  displayedProgress += (rawProgress - displayedProgress) * Math.min(1, dt*4.5);
+  updateScene(displayedProgress);
+
+  parallaxX += (mouseX - parallaxX) * Math.min(1, dt*3);
+  parallaxY += (mouseY - parallaxY) * Math.min(1, dt*3);
+  watch.rotation.y = baseRotY + parallaxX * 0.18;
+  watch.rotation.x = baseRotX + parallaxY * 0.09;
+
+  secHand.rotation.z = -(elapsed % 60) / 60 * Math.PI * 2;
+
+  dust.rotation.y += dt * 0.02;
+  dust.position.y = Math.sin(elapsed*0.15) * 0.2;
+
+  renderer.render(scene, camera);
+  requestAnimationFrame(tick);
+}
+tick();
+
+window.addEventListener('load', ()=>{
+  setTimeout(()=>{
+    const pl = document.getElementById('preloader');
+    if (pl) pl.classList.add('hidden');
+  }, 500);
+});
+setTimeout(()=>{
+  const pl = document.getElementById('preloader');
+  if (pl) pl.classList.add('hidden');
+}, 2500);
+
+window.addEventListener('resize', ()=>{
+  camera.aspect = window.innerWidth/window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
+})();
+</script>
+
+</body>
+        </html>
